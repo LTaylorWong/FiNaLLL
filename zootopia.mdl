@@ -14,18 +14,18 @@ pop
 push
 move 200 250 0
 rotate x 90
-torus 
+torus 200 250 0 25 50
 //O 
 pop
 push
 move 250 250 0
 rotate x 90
-torus
+torus 250 250 0 25 50
 //T
 pop
 push
 move 300 350 0
-box
+box 
 push
 rotate z 90
 box
@@ -34,7 +34,7 @@ pop
 push
 move 350 250 0
 rotate x 90
-torus
+torus 350 250 0 25 50
 //P
 pop
 push
@@ -44,7 +44,7 @@ box
 push
 move 450 350 0
 rotate x 90
-torus 
+torus 450 350 0 20 45
 //I
 pop
 push
