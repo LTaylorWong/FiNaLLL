@@ -28,7 +28,49 @@ def draw_polygons( points, screen, color ):
                        points[p][0], points[p][1], color )
         p+= 3
 
+def scanline( points, screen, color, z_buffer ):
+    p = 0
+    while p < len( points ) - 2:
 
+        triangle = [points[p], points[p+1], points[p+2]]
+        triangle.sort(key=lambda point: point[1])
+
+        x0 = triangle[0][0]
+        y0 = triangle[0][1]
+        z0 = triangle[0][2]
+        x1 = triangle[1][0]
+        y1 = triangle[1][1]
+        z1 = triangle[1][2]
+        x2 = triangle[2][0]
+        y2 = triangle[2][1]
+        z2 = triangle[2][2]
+
+        d0 = (x2 - x0) / (y2 - y0)
+        dz0 = (z2 - z0) / (y2 - y0)
+        if (y1 != y0):
+            d1 = (x1 - x0) / (y1 - y0)
+            dz1 = (z1 - z0) / (y1 - y0)
+        if (y2 != y1):
+            d2 = (x2 - x1) / (y2 - y1)
+            dz2 = (z2 - z1) / (y2 - y1)
+
+        counter = 0
+        while y0 + counter < y2:
+            newx0 = x0 + counter * d0
+            newy = y0 + counter
+            newz = z0 + counter * dz0
+            if (newy < y1):
+                newx1 = x0 + counter * d1
+                newz1 = z0 + counter * dz1
+            else:
+                newx1 = x1 + (newy - y1) * d2
+                newz1 = z1 + (newy - y1) * dz2
+
+            draw_line( screen, newx0, newy, newz, newx1, newy, newz1, color, z_buffer)
+
+            counter += 1
+
+        p+= 3
 
 def add_box( points, x, y, z, width, height, depth ):
     x1 = x + width
