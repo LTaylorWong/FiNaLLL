@@ -41,10 +41,14 @@ push
 move 400 350 0
 rotate z 90
 box
+push
+move 450 350 0
+rotate x 90
+torus 
 //I
 pop
 push
-move 450 350 0
+move 500 350 0
 rotate z 90
 box
 //A
