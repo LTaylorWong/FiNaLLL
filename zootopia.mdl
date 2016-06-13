@@ -1,0 +1,51 @@
+frames 100
+basename zoo
+//Z
+push
+move 150 350 0
+box -100 50 50 100 10
+push
+rotate z 45
+box -100 50 50 100 10
+push
+rotate z -45
+//O
+pop
+push
+move 200 250 0
+torus 
+//O 
+pop
+push
+move 250 250 0
+torus
+//T
+pop
+push
+move 300 350 0
+box
+push
+rotate z 90
+box
+//O
+pop
+push
+move 350 250 o
+torus
+//P
+pop
+push
+move 400 350 0
+rotate z 90
+box
+//I
+pop
+push
+move 450 350 0
+rotate z 90
+box
+//A
+
+vary spinny 0 99 0 1
+vary bigenator 0 49 0 1
+vary bigenator 50 99 1 0
